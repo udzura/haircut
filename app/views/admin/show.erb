@@ -1,0 +1,59 @@
+<%# encoding: utf-8 %>
+<% content_for :title do %>
+<%=h t("haircut.admin.titles.show") %>
+<% end %>
+<h1><%=h t("haircut.admin.first_headers.show",
+        :url => @slug.fullpath) %></h1>
+
+<table>
+ <tr>
+  <th>URL in short</th>
+  <th>Original URL</th>
+  <th>Created at</th>
+  
+  <th></th>
+  <th></th>
+ </tr>
+
+ <tr>
+  <td><%= link_to @slug.fullpath, url_for(:redirect, :redirect, :slug => @slug.slug) %></td>
+  <td><%= link_to @slug.url, @slug.url %></td>
+  <td><%=l @slug.created_at %></td>
+
+  <td>
+   <%= link_to t('haircut.admin.links.more'), url_for(:admin, :show, :slug => @slug.slug) %>
+  </td>
+  <td>
+   <% form_for(@slug, url_for(:admin, :destroy, :slug => @slug.slug), :method => :delete) do |f| %>
+    <%= f.submit "削除" %>
+   <% end %>
+  </td>
+ </tr>
+</table>
+
+<h2><%=h t("haircut.admin.headers.access_count") %></h2>
+<p><big><strong><%=h t("haircut.admin.messages.access_count", :count => @slug.accesses.size ) %></strong></big></p>
+
+<h2><%=h t("haircut.admin.headers.access_detail") %></h2>
+
+<table>
+ <tr>
+  <th>Referer</th>
+  <th>Accessed at</th>
+ </tr>
+
+ <% @accesses.each do |access| %>
+  <tr>
+   <td><%= link_to access.referer, access.referer %></td>
+   <td><%= access.created_at %></td>
+  </tr>
+ <% end %>
+</table>
+
+<%= will_paginate(@accesses) %>
+
+
+<p>
+ <%= link_to t('haircut.admin.links.new'), url_for(:admin, :new) %>
+ <%= link_to t('haircut.admin.links.list'), url_for(:admin, :list) %>
+</p>

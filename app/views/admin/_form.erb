@@ -1,0 +1,23 @@
+<%# encoding: utf-8 %>
+<% if @slug.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= t('haircut.admin.messages.error', :count => @slug.errors.count) %></h2>
+
+    <ul>
+    <% @slug.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= f.label :url %>
+  <%= f.text_field :url, :size => 50 %> =>
+
+  <%= f.label :slug, :caption => "http://#{request.host}/" %><%= f.text_field :slug, :size => 10 %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>

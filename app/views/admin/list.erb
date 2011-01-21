@@ -1,0 +1,39 @@
+<%# encoding: utf-8 %>
+<% content_for :title do %>
+<%= t("haircut.admin.titles.list") %>
+<% end %>
+<h1><%= t("haircut.admin.first_headers.list") %></h1>
+
+<table>
+ <tr>
+  <th>URL in short</th>
+  <th>Original URL</th>
+  <th>Created at</th>
+  
+  <th></th>
+  <th></th>
+ </tr>
+ 
+ <% @slugs.each do |slug| %>
+  <tr>
+   <td><%= link_to slug.fullpath, url_for(:redirect, :redirect, :slug => slug.slug) %></td>
+   <td><%= link_to slug.url, slug.url %></td>
+   <td><%=l slug.created_at %></td>
+   
+   <td>
+    <%= link_to t('haircut.admin.links.more'), url_for(:admin, :show, :slug => slug.slug) %>
+   </td>
+   <td>
+    <% form_for(slug, url_for(:admin, :destroy, :slug => slug.slug), :method => :delete) do |f| %>
+     <%= f.submit "削除" %>
+    <% end %>
+   </td>
+  </tr>
+ <% end %>
+</table>
+
+<%= will_paginate @slugs %>
+
+<p>
+ <%= link_to t('haircut.admin.links.new'), url_for(:admin, :new) %>
+</p>

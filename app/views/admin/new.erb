@@ -1,0 +1,11 @@
+<%# encoding: utf-8 %>
+<% content_for :title do %>
+<%= t("haircut.admin.titles.new") %>
+<% end %>
+<h1><%= t("haircut.admin.first_headers.new") %></h1>
+
+<%= partial 'admin/new_form' %>
+
+<p>
+ <%= link_to t('haircut.admin.links.list'), url_for(:admin, :list) %>
+</p>

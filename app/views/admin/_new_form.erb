@@ -1,0 +1,6 @@
+<%# encoding: utf-8 %>
+<div id="internal_form">
+ <% form_for(@slug, url_for(:admin, :create), :method => :post) do |f| %>
+  <%= partial :"admin/form", :locals => {:f => f} %>
+ <% end %>
+</div>

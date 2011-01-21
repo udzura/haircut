@@ -1,0 +1,28 @@
+:ja:
+  :haircut:
+    :admin:
+      :created: "%{url} へのショートカットを新規作成しました"
+      :create_failed: "%{url} へのショートカットを作成に失敗しました"
+      :destroyed: "%{url} へのショートカットを削除しました"
+      :destroy_failed: "%{url} へのショートカットの削除に失敗しました"
+      :titles:
+        :default: "管理画面"
+        :new: "新規登録！"
+        :list: "ショートカット一覧"
+        :show: "ショートカットの詳細"
+      :first_headers:
+        :new: "ショートカットの新規登録"
+        :list: "ショートカット一覧"
+        :show: "ショートカット %{url} の詳細"
+      :links:
+        :new: "新規作成"
+        :list: "ショートカット一覧"
+        :more: "More"
+        :destroy: "Delete"
+      :messages:
+        :error: "%{count}件のエラーのため、セーブできませんでした"
+        :access_count: "%{count} 件"
+      :headers:
+        :access_count: "このショートカットへのアクセス数"
+        :access_detail: "アクセスの詳細"
+

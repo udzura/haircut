@@ -1,0 +1,27 @@
+<%# encoding: utf-8 %><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+ <head>
+  <title>Haircut - the URL Shortener - <%= @content_for_title || t("haircut.admin.titles.default") %></title>
+  <%= stylesheet_link_tag "/stylesheets/scaffold.css" %>
+  <%= stylesheet_link_tag "/stylesheets/custom.css" %>
+  <%= javascript_include_tag "/javascripts/jquery.js" %>
+ </head>
+ <body>
+  <div class="content-header">
+   <!--
+   <p class="username"><%#=h t("admin.welcome_header", :username => @username) %></p>
+   -->
+   <p class="notice"><%= flash[:notice] %></p>
+   <p class="alert"><%= flash[:alert] %></p>
+  </div>
+  <div class="content-body">
+
+<%= yield %>
+
+  </div>
+  <div class="content-footer">
+    <p>&copy; 2011 Haircut Project Team</p>
+  </div>
+ </body>
+</html>
