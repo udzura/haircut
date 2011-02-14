@@ -1,0 +1,5 @@
+:locale: :ja
+:database_uri: <%= ENV['MONGOHQ_URL'] %>
+:deployed_host_name: "l.udr.me"
+:slug_default_length: 6
+:basic_auth: ["admin", "nimda"] 

@@ -1,15 +1,19 @@
 
 # Connection.new takes host, port
-host = Hc::Config[:database_host] || "localhost"
-port = Mongo::Connection::DEFAULT_PORT
-
 database_name = case Padrino.env
   when :development then 'haircut_development'
   when :production  then 'haircut_production'
   when :test        then 'haircut_test'
 end
 
-Mongoid.database = Mongo::Connection.new(host, port).db(database_name)
+if uri_string = Hc::Config[:database_uri]
+  Mongoid.database = Mongo::Connection.from_uri(uri_string).
+                         db(URI.parse(uri_string).path.gsub(/^\//, ''))
+else
+  host = Hc::Config[:database_host] || "localhost"
+  port = Mongo::Connection::DEFAULT_PORT
+  Mongoid.database = Mongo::Connection.new(host, port).db(database_name)
+end
 
 # You can also configure Mongoid this way
 # Mongoid.configure do |config|

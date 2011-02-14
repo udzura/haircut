@@ -19,5 +19,8 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 
 
 # Padrino
-gem 'sinatra', "1.1.0"
-gem 'padrino', "0.9.19"
+gem 'sinatra', "1.1.2"
+gem 'padrino', "0.9.20"
+
+# Heroku deploy
+gem 'heroku'
